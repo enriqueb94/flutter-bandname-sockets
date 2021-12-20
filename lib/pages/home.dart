@@ -165,6 +165,22 @@ class _HomePageState extends State<HomePage> {
       Colors.yellow[200] as Color
     ];
 
-    return PieChart(dataMap: dataMap);
+    return Padding(
+      padding: const EdgeInsets.only(top: 8.0),
+      child: Container(
+        width: double.infinity,
+        height: 200,
+        child: (bands.length > 0)
+            ? PieChart(dataMap: dataMap)
+            : Center(
+                child: Column(
+                children: [
+                  LinearProgressIndicator(),
+                  SizedBox(height: 15),
+                  Text('Carrgando...'),
+                ],
+              )),
+      ),
+    );
   }
 }
